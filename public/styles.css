@@ -1,0 +1,11 @@
+.header {
+    font-size: 30px;
+    background-color: pink;
+    height: 10%;
+    width: 100%;
+    padding: 20px;
+}
+
+body {
+    margin: 0px;
+}
