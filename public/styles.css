@@ -9,3 +9,17 @@
 body {
     margin: 0px;
 }
+
+.textBox-left {
+    border: 2px solid black;
+    margin: 20px 20px;
+    width: 46%;
+    float: left;
+}
+
+.textBox-right {
+    border: 2px solid black;
+    margin: 20px 20px;
+    width: 46%;
+    float: right;
+}
