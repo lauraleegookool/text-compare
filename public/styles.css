@@ -23,3 +23,8 @@ body {
     width: 46%;
     float: right;
 }
+
+.myButton {
+    margin-right: 20px;
+    float: right;
+}

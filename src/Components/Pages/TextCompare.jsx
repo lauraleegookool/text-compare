@@ -1,4 +1,4 @@
-import { TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import React from 'react';
 
 function TextCompare() {
@@ -19,6 +19,9 @@ function TextCompare() {
             </div>
             <div className="textBox-right">
                 <TextField label="Second text" multiline rows={16} variant="filled" fullWidth={true} value={textBoxes.text2} id={'text2'} onChange={handleChange}/>
+            </div>
+            <div className="myButton">
+                <Button variant="contained" color="secondary">Compare</Button>
             </div>
         </div>
     );
