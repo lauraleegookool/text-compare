@@ -1,10 +1,11 @@
 import { Button, TextField } from '@material-ui/core';
 import React from 'react';
-import textCompare from '../../actions/textCompareActions';
+import axios from 'axios';
 
 function TextCompare() {
 
     const [textBoxes, setText] = React.useState({text1: '', text2: ''});
+    const [textsEqual, setEqual] = React.useState(false);
 
     function handleChange(event) {
         const { value, id } = event.target;
@@ -14,7 +15,22 @@ function TextCompare() {
     }
 
     function handleSubmit() {
-        textCompare(textBoxes);
+        const { text1, text2 } = textBoxes;
+        const data = {
+            'right': text1,
+            'left': text2,
+        };
+    
+        const header = {
+            'Content-Type': 'application/json'
+        };
+        axios.post('https://api.diffchecker.com/public/text?output_type=json&email=lauraleelovesthesmurfs@gmail.com', data, header)
+        .then(function (response) {
+            const { added, removed } = response.data;
+            if ((added + removed) === 0) {
+                setEqual(true);
+            } 
+        });
     }
 
     return (
