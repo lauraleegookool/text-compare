@@ -6,6 +6,7 @@ function TextCompare() {
 
     const [textBoxes, setText] = React.useState({text1: '', text2: ''});
     const [textsEqual, setEqual] = React.useState(false);
+    const [isSubmitted, setSubmit] = React.useState(false);
 
     function handleChange(event) {
         const { value, id } = event.target;
@@ -29,16 +30,32 @@ function TextCompare() {
             const { added, removed } = response.data;
             if ((added + removed) === 0) {
                 setEqual(true);
-            } 
+            } else {
+                setEqual(false);
+            }
+            setSubmit(true);
         });
+    }
+
+    let style = {}
+    if (isSubmitted) {
+        if (textsEqual) {
+            style = {
+                backgroundColor: '#98fb98'
+            }
+        } else {
+            style = {
+                backgroundColor: 'pink'
+            }
+        }
     }
 
     return (
         <div>
-            <div className="textBox-left">
+            <div className="textBox-left" style={style}>
                 <TextField label="First text" multiline rows={16} variant="filled" autoFocus={true} fullWidth={true} value={textBoxes.text1} id={'text1'} onChange={handleChange}/>
             </div>
-            <div className="textBox-right">
+            <div className="textBox-right" style={style}>
                 <TextField label="Second text" multiline rows={16} variant="filled" fullWidth={true} value={textBoxes.text2} id={'text2'} onChange={handleChange}/>
             </div>
             <div className="myButton">
