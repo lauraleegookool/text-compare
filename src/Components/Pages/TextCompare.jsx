@@ -15,6 +15,29 @@ function TextCompare() {
         });
     }
 
+    function resetComparison() {
+        setSubmit(false);
+    }
+
+    function clearRight() {
+        setText(prev => {
+            return {...prev, text2: ''}
+        });
+        resetComparison();
+    }
+
+    function clearLeft() {
+        setText(prev => {
+            return {...prev, text1: ''}
+        });
+        resetComparison();
+    }
+
+    function clearBoxes() {
+        clearLeft();
+        clearRight();
+    }
+
     function handleSubmit() {
         const { text1, text2 } = textBoxes;
         const data = {
@@ -60,6 +83,15 @@ function TextCompare() {
             </div>
             <div className="myButton">
                 <Button variant="contained" color="secondary" onClick={handleSubmit}>Compare</Button>
+            </div>
+            <div className="myClearButtonLeft">
+                <Button variant="outlined" color="primary" id={'text1'} onClick={clearLeft}>Clear Left</Button>
+            </div>
+            <div className="myButton">
+                <Button variant="contained" color="primary" id={'both'} onClick={clearBoxes}>Clear Both</Button>
+            </div>
+            <div className="myButton">
+                <Button variant="outlined" color="primary" id={'text2'} onClick={clearRight}>Clear Right</Button>
             </div>
         </div>
     );

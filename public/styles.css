@@ -28,3 +28,8 @@ body {
     margin-right: 20px;
     float: right;
 }
+
+.myClearButtonLeft {
+    margin-left: 20px;
+    float: left;
+}
